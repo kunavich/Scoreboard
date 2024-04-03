@@ -1,0 +1,26 @@
+package com.example.demo;
+
+public class Scoreboard {
+
+    private List<Match> board = new ArrayList();
+
+    public Match startNewMatch(){
+        return new Match(" "," ");
+    }
+
+    public Match updateMatch(){
+        return new Match(" "," ");
+    }
+
+    public Match finishMatch (){
+        return new Match(" "," ");
+    }
+
+    public List<Match> getSummery() {
+
+        return board;
+    }
+
+
+
+}
