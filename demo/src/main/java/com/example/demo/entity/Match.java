@@ -29,9 +29,6 @@ public class Match {
     }
 
     public boolean equals(Object object) {
-        if (this == object) return true;
-        if (object == null || getClass() != object.getClass()) return false;
-        if (!super.equals(object)) return false;
         Match match = (Match) object;
         return homeNameScore == match.homeNameScore && awayNameScore == match.awayNameScore && homeName.equals(match.homeName) && awayName.equals(match.awayName);
     }
