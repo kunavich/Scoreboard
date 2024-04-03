@@ -21,12 +21,18 @@ public class Scoreboard {
         if (awayTeamScore < 0) {
             throw new RuntimeException("Away Score is Negative");
         }
+        if (! board.contains(match) ) {
+            throw new RuntimeException("Match not Found");
+        }
         int index = board.indexOf(match);
         board.get(index).setHomeNameScore(homeTeamScore);
         board.get(index).setAwayNameScore(awayTeamScore);
     }
 
     public void finishMatch(Match match) {
+        if (! board.contains(match) ) {
+            throw new RuntimeException("Match not Found");
+        }
         board.remove(match);
     }
 
