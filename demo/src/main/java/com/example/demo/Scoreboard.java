@@ -36,7 +36,7 @@ public class Scoreboard {
         board.remove(match);
     }
 
-    public List<Match> getSummery() {
+    public List<Match> getSummary() {
         board.sort(new SortByScore());
         return board;
     }

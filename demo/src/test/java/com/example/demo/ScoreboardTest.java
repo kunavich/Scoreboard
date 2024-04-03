@@ -34,7 +34,7 @@ public class ScoreboardTest {
         //when
         scoreboard.startNewMatch(match.getHomeName(), match.getAwayName());
         //then
-        Assert.assertEquals(finaleList, scoreboard.getSummery());
+        Assert.assertEquals(finaleList, scoreboard.getSummary());
     }
 
     @Test
@@ -49,7 +49,7 @@ public class ScoreboardTest {
         finaleList.add(match);
 
         //then
-        Assert.assertEquals(finaleList, scoreboard.getSummery());
+        Assert.assertEquals(finaleList, scoreboard.getSummary());
     }
 
     @Test
@@ -114,7 +114,7 @@ public class ScoreboardTest {
         //when
         scoreboard.finishMatch(match);
         //then
-        Assert.assertTrue(scoreboard.getSummery().isEmpty());
+        Assert.assertTrue(scoreboard.getSummary().isEmpty());
     }
 
     @Test
@@ -128,7 +128,7 @@ public class ScoreboardTest {
         //when
         scoreboard.finishMatch(secondMatch);
         //then
-        Assert.assertEquals(finaleList, scoreboard.getSummery());
+        Assert.assertEquals(finaleList, scoreboard.getSummary());
     }
 
     @Test
@@ -145,7 +145,7 @@ public class ScoreboardTest {
         finaleList.add(secondMatch);
         finaleList.add(firstMatch);
         //then
-        Assert.assertEquals(finaleList, scoreboard.getSummery());
+        Assert.assertEquals(finaleList, scoreboard.getSummary());
     }
 
     @Test
@@ -166,7 +166,7 @@ public class ScoreboardTest {
         finaleList.add(firstMatch);
 
         //then
-        Assert.assertEquals(finaleList, scoreboard.getSummery());
+        Assert.assertEquals(finaleList, scoreboard.getSummary());
     }
 
     @Test
@@ -203,7 +203,7 @@ public class ScoreboardTest {
         finaleList.add(thirdMatch);
 
         //then
-        Assert.assertEquals(finaleList, scoreboard.getSummery());
+        Assert.assertEquals(finaleList, scoreboard.getSummary());
     }
 
     private Match setScores(Match match, int home, int away) {
