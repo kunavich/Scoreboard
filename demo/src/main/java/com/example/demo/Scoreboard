@@ -1,28 +1,39 @@
 package com.example.demo;
 
+import com.example.demo.comporator.SortByScore;
 import com.example.demo.entity.Match;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Scoreboard {
 
     private List<Match> board = new ArrayList();
 
-    public Match startNewMatch(String homeName,String awayName){
-        return new Match(" "," ");
+    public void startNewMatch(String homeName,String awayName){
+        board.add(new Match(homeName,awayName));
     }
 
-    public Match updateMatch(Match match,int homeTeamScore,int awayTeamScore){
-        return new Match(" "," ");
+    public void updateMatch(Match match,int homeTeamScore,int awayTeamScore){
+        if(homeTeamScore<0) {
+            throw new RuntimeException("Home Score is Negative");
+        }
+        if(awayTeamScore<0) {
+            throw new RuntimeException("Away Score is Negative");
+        }
+        int index=board.indexOf(match);
+        board.get(index).setAwayNameScore(homeTeamScore);
+        board.get(index).setAwayNameScore(awayTeamScore);
+
     }
 
-    public Match finishMatch(Match match){
-        return new Match(" "," ");
+    public void finishMatch(Match match){
+        board.remove(match);
     }
 
     public List<Match> getSummery() {
-
+        Collections.sort(board, new SortByScore());
         return board;
     }
 
