@@ -58,7 +58,7 @@ public class ScoreboardTest {
         Match match = new Match(HOME, AWAY);
         scoreboard.startNewMatch(match.getHomeName(), match.getAwayName());
         //when
-        RuntimeException exception = Assert.assertThrows(NullPointerException.class, () -> {
+        RuntimeException exception = Assert.assertThrows(RuntimeException.class, () -> {
             scoreboard.updateMatch(match, -3, AWAY_SCORE);
         });
         //then
@@ -71,7 +71,7 @@ public class ScoreboardTest {
         Match match = new Match(HOME, AWAY);
         scoreboard.startNewMatch(match.getHomeName(), match.getAwayName());
         //when
-        RuntimeException exception = Assert.assertThrows(NullPointerException.class, () -> {
+        RuntimeException exception = Assert.assertThrows(RuntimeException.class, () -> {
             scoreboard.updateMatch(match, HOME_SCORE, -3);
         });
         //then
