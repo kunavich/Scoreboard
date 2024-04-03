@@ -22,7 +22,7 @@ public class Scoreboard {
             throw new RuntimeException("Away Score is Negative");
         }
         int index = board.indexOf(match);
-        board.get(index).setAwayNameScore(homeTeamScore);
+        board.get(index).setHomeNameScore(homeTeamScore);
         board.get(index).setAwayNameScore(awayTeamScore);
     }
 
