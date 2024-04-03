@@ -1,10 +1,15 @@
 package com.example.demo;
 
+import com.example.demo.entity.Match;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Scoreboard {
 
     private List<Match> board = new ArrayList();
 
-    public Match startNewMatch(){
+    public Match startNewMatch(String homeName,String awayName){
         return new Match(" "," ");
     }
 
