@@ -15,14 +15,15 @@ public class ScoreboardTest {
     public static final String AWAY = "away";
     public static final int HOME_SCORE = 2;
     public static final int AWAY_SCORE = 4;
+    public static final String MADRID = "Madrid";
+    public static final String BARCELONA = "Barcelona";
     Scoreboard scoreboard;
     List<Match> finaleList;
 
     @Before
-    private void init(){
+    public void init(){
         scoreboard = new Scoreboard();
         finaleList = new ArrayList<>();
-
     }
 
     @Test
@@ -44,8 +45,7 @@ public class ScoreboardTest {
         //when
         scoreboard.updateMatch(match,HOME_SCORE,AWAY_SCORE);
 
-        match.setHomeNameScore(HOME_SCORE);
-        match.setAwayNameScore(AWAY_SCORE);
+        match = setScores(match);
         finaleList.add(match);
 
         //then
@@ -91,40 +91,61 @@ public class ScoreboardTest {
 
     @Test
     public void finishMatch_whenMultipleMatchesOnBoard() {
-        //TODO
         //given
-        Match match = new Match(HOME, AWAY);
-        scoreboard.startNewMatch(match.getHomeName(),match.getAwayName());
+        Match firstMatch = new Match(HOME, AWAY);
+        scoreboard.startNewMatch(firstMatch.getHomeName(),firstMatch.getAwayName());
+        Match secondMatch = new Match(MADRID, BARCELONA);
+        scoreboard.startNewMatch(secondMatch.getHomeName(),secondMatch.getAwayName());
+        finaleList.add(firstMatch);
         //when
-        scoreboard.finishMatch(match);
+        scoreboard.finishMatch(secondMatch);
         //then
-        Assert.assertTrue(scoreboard.getSummery().isEmpty());
+        Assert.assertEquals(scoreboard.getSummery(),finaleList);
     }
 
     @Test
     public void getSummery_whenListNeedToBeSorted() {
-        //TODO
         //given
-        Match match = new Match(HOME,AWAY);
-        finaleList.add(match);
-        scoreboard.startNewMatch(HOME,AWAY);
+        Match firstMatch = new Match(HOME, AWAY);
+        scoreboard.startNewMatch(firstMatch.getHomeName(),firstMatch.getAwayName());
+        Match secondMatch = new Match(MADRID, BARCELONA);
+        scoreboard.startNewMatch(secondMatch.getHomeName(),secondMatch.getAwayName());
         //when
+        scoreboard.updateMatch(secondMatch,HOME_SCORE,AWAY_SCORE);
 
+        secondMatch=setScores(secondMatch);
+        finaleList.add(secondMatch);
+        finaleList.add(firstMatch);
         //then
         Assert.assertEquals(scoreboard.getSummery(),finaleList);
     }
 
     @Test
     public void getSummery_whenThereAreTwoSameSums() {
-        //TODO
         //given
-        Match match = new Match(HOME,AWAY);
-        finaleList.add(match);
-        scoreboard.startNewMatch(HOME,AWAY);
+        Match firstMatch = new Match(HOME, AWAY);
+        scoreboard.startNewMatch(firstMatch.getHomeName(),firstMatch.getAwayName());
+        Match secondMatch = new Match(MADRID, BARCELONA);
+        scoreboard.startNewMatch(secondMatch.getHomeName(),secondMatch.getAwayName());
         //when
+        scoreboard.updateMatch(firstMatch,HOME_SCORE,AWAY_SCORE);
+        scoreboard.updateMatch(secondMatch,HOME_SCORE,AWAY_SCORE);
+
+        firstMatch=setScores(firstMatch);
+        secondMatch=setScores(secondMatch);
+
+        finaleList.add(secondMatch);
+        finaleList.add(firstMatch);
 
         //then
         Assert.assertEquals(scoreboard.getSummery(),finaleList);
     }
-    
+
+    private Match setScores(Match match){
+        //TODO
+        match.setHomeNameScore(HOME_SCORE);
+        match.setAwayNameScore(AWAY_SCORE);
+        return match;
+    }
+
 }
