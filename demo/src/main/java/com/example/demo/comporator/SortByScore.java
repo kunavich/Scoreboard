@@ -6,6 +6,11 @@ import java.util.Comparator;
 
 public class SortByScore implements Comparator<Match> {
     public int compare(Match a, Match b) {
-        return a.getAwayNameScore() + a.getHomeNameScore() - b.getHomeNameScore() - b.getAwayNameScore();
+        int ans = b.getHomeNameScore() + b.getAwayNameScore();
+        ans = ans - a.getAwayNameScore() - a.getHomeNameScore();
+        if(ans==0){
+            return -1;
+        }
+        return ans;
     }
 }
