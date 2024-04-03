@@ -1,5 +1,7 @@
 package com.example.demo.entity;
 
+import java.util.Objects;
+
 public class Match {
 
     private String homeName;
@@ -36,6 +38,14 @@ public class Match {
 
     public int hashCode() {
         return Objects.hash(super.hashCode(), homeName, awayName, homeNameScore, awayNameScore);
+    }
+
+    public void setHomeName(String homeName) {
+        this.homeName = homeName;
+    }
+
+    public void setAwayName(String awayName) {
+        this.awayName = awayName;
     }
 
     public String getHomeName() {

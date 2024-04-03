@@ -13,11 +13,11 @@ public class Scoreboard {
         return new Match(" "," ");
     }
 
-    public Match updateMatch(){
+    public Match updateMatch(Match match,int homeTeamScore,int awayTeamScore){
         return new Match(" "," ");
     }
 
-    public Match finishMatch (){
+    public Match finishMatch(Match match){
         return new Match(" "," ");
     }
 
