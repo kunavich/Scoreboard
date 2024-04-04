@@ -1,7 +1,12 @@
 package com.example.demo.entity;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.Objects;
 
+@Getter
+@Setter
 public class Match {
 
     private String homeName;
@@ -18,7 +23,7 @@ public class Match {
         this.homeNameScore = 0;
     }
 
-    @java.lang.Override
+    @Override
     public java.lang.String toString() {
         return "Match{" +
                 "homeName='" + homeName + '\'' +
@@ -35,37 +40,5 @@ public class Match {
 
     public int hashCode() {
         return Objects.hash(super.hashCode(), homeName, awayName, homeNameScore, awayNameScore);
-    }
-
-    public void setHomeName(String homeName) {
-        this.homeName = homeName;
-    }
-
-    public void setAwayName(String awayName) {
-        this.awayName = awayName;
-    }
-
-    public String getHomeName() {
-        return homeName;
-    }
-
-    public String getAwayName() {
-        return awayName;
-    }
-
-    public int getHomeNameScore() {
-        return homeNameScore;
-    }
-
-    public void setHomeNameScore(int homeNameScore) {
-        this.homeNameScore = homeNameScore;
-    }
-
-    public int getAwayNameScore() {
-        return awayNameScore;
-    }
-
-    public void setAwayNameScore(int awayNameScore) {
-        this.awayNameScore = awayNameScore;
     }
 }
